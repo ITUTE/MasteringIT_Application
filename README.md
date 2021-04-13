@@ -20,6 +20,23 @@
 ![](https://img.icons8.com/color/48/000000/microsoft-sql-server.png)
 
 ## Project Structure
+``` bash
+MasteringIT_Application
+├───.vs
+│   ├───MasteringIT_Application
+│   │   └───v16
+│   └───MIT_App
+│       └───v16
+└───MIT_App
+    ├───bin
+    │   └───Debug
+    ├───Image
+    ├───obj
+    │   └───Debug
+    │       └───TempPE
+    ├───Properties
+    └───Views
+```
 
 <details>
   <summary> Chi tiết </summary>
