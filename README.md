@@ -1,6 +1,4 @@
-# MasteringIT_Application
-
-# X4FIT - "IT'S FOR FIT" WEB HỎI ĐÁP DÀNH CHO FIT
+# Mastering IT Application
 
 [![HitCount](http://hits.dwyl.com/ITUTE/MasteringIT_Applicationt.svg)](http://hits.dwyl.com/ITUTE/MasteringIT_Application)
 ![GitHub contributors](https://img.shields.io/github/contributors/ITUTE/MasteringIT_Application)
@@ -22,6 +20,23 @@
 ![](https://img.icons8.com/color/48/000000/microsoft-sql-server.png)
 
 ## Project Structure
+``` bash
+MasteringIT_Application
+├───.vs
+│   ├───MasteringIT_Application
+│   │   └───v16
+│   └───MIT_App
+│       └───v16
+└───MIT_App
+    ├───bin
+    │   └───Debug
+    ├───Image
+    ├───obj
+    │   └───Debug
+    │       └───TempPE
+    ├───Properties
+    └───Views
+```
 
 <details>
   <summary> Chi tiết </summary>
