@@ -1,0 +1,156 @@
+﻿<Window x:Class="MIT_App.Round1View"
+        xmlns:materalDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MIT_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920" WindowStartupLocation="Manual" WindowStyle="None" WindowState="Maximized" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7.5*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Image/Asset 2.png" Height="100" Width="100"/>
+                    <Image Source="/Image/Asset 2.png" Height="100" Width="100"/>
+                    <Image Source="/Image/Asset 2.png" Height="100" Width="100"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1" Background="Black" Margin="0 20 0 20">
+            </Grid>
+            <Grid Grid.Column="2">
+                <TextBlock Text="KHỞI ĐỘNG" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center" 
+                           FontSize="50" 
+                           Margin="10" 
+                           FontWeight="Bold"
+                           FontFamily="Arial"/>
+            </Grid>
+            <Grid Grid.Column="3">
+                <TextBlock Text="15:00:00" 
+                           HorizontalAlignment="Right" 
+                           VerticalAlignment="Center" 
+                           FontSize="50" 
+                           Margin="0 0 10 0" 
+                           FontWeight="Bold"
+                           FontFamily="Arial"
+                           Name="CountdownTimer"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Height="1" Margin="20 2" VerticalAlignment="Top" Background="Black"/>
+            <StackPanel Name="ProgressBar" Height="5" VerticalAlignment="Top" Background="Black" HorizontalAlignment="Center" Width="560"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="QUESTION 1" 
+                           Foreground="#9e0707"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontSize="30" 
+                           HorizontalAlignment="Center"
+                           FontFamily="Arial"/>
+                    <Border BorderThickness="3" BorderBrush="#9e0707" CornerRadius="20">
+                        <TextBlock Text="20" 
+                           VerticalAlignment="Center" 
+                           FontSize="70" 
+                           TextAlignment="Center"
+                           FontFamily="Arial"/>
+                    </Border>                    
+                </WrapPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <StackPanel Height="5" VerticalAlignment="Center" Background="Black" Margin="10 35 10 0"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBlock Text="YOUR ANSWER" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"/>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Border Name="AnswerA" BorderThickness="3" BorderBrush="#9e0707" CornerRadius="20" Margin="5" MouseDown="Answer_MouseDown">
+                                <TextBlock Text="A"
+                                           Width="100"
+                                           VerticalAlignment="Center" 
+                                           FontSize="50" 
+                                           TextAlignment="Center"
+                                           FontFamily="Arial"/>
+                            </Border>
+                            <Border Name="AnswerB" BorderThickness="3" Background="#8DD28A" BorderBrush="#9e0707" CornerRadius="20" Margin="5" MouseDown="Answer_MouseDown">
+                                <TextBlock Text="B"
+                                           Width="100"
+                                           VerticalAlignment="Center" 
+                                           FontSize="50" 
+                                           TextAlignment="Center"
+                                           FontFamily="Arial"/>
+                            </Border>
+                            <Border Name="AnswerC" BorderThickness="3" BorderBrush="#9e0707" CornerRadius="20" Margin="5" MouseDown="Answer_MouseDown">
+                                <TextBlock Text="C"
+                                           Width="100"
+                                           VerticalAlignment="Center" 
+                                           FontSize="50" 
+                                           TextAlignment="Center"
+                                           FontFamily="Arial"/>
+                            </Border>
+                            <Border Name="AnswerD" BorderThickness="3" BorderBrush="#9e0707" CornerRadius="20" Margin="5" MouseDown="Answer_MouseDown">
+                                <TextBlock Text="D"
+                                           Width="100"
+                                           VerticalAlignment="Center" 
+                                           FontSize="50" 
+                                           TextAlignment="Center"
+                                           FontFamily="Arial"/>
+                            </Border>
+                        </WrapPanel>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <StackPanel Height="5" VerticalAlignment="Center" Background="Black" Margin="10 35 10 0"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="BEE TEAM" 
+                           Foreground="#9e0707"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center" 
+                           FontSize="30" 
+                           HorizontalAlignment="Center"
+                           FontFamily="Arial"/>
+                    <Border BorderThickness="3" BorderBrush="#9e0707" CornerRadius="20">
+                        <TextBlock Text="120" 
+                           VerticalAlignment="Center" 
+                           FontSize="70" 
+                           TextAlignment="Center"
+                           FontFamily="Arial"/>
+                    </Border>
+                </WrapPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
