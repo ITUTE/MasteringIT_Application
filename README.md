@@ -1,6 +1,4 @@
-# MasteringIT_Application
-
-# X4FIT - "IT'S FOR FIT" WEB HỎI ĐÁP DÀNH CHO FIT
+# Mastering IT Application
 
 [![HitCount](http://hits.dwyl.com/ITUTE/MasteringIT_Applicationt.svg)](http://hits.dwyl.com/ITUTE/MasteringIT_Application)
 ![GitHub contributors](https://img.shields.io/github/contributors/ITUTE/MasteringIT_Application)
