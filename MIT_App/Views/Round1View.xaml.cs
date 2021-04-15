@@ -84,9 +84,13 @@ namespace MIT_App
                 Dispatcher.Invoke(() =>
                 {
                     AnswerA.Background = Brushes.Transparent;
+                    ((TextBlock)AnswerA.Child).Foreground = new SolidColorBrush(Color.FromRgb(219, 106, 5));
                     AnswerB.Background = Brushes.Transparent;
+                    ((TextBlock)AnswerB.Child).Foreground = new SolidColorBrush(Color.FromRgb(219, 106, 5));
                     AnswerC.Background = Brushes.Transparent;
+                    ((TextBlock)AnswerC.Child).Foreground = new SolidColorBrush(Color.FromRgb(219, 106, 5));
                     AnswerD.Background = Brushes.Transparent;
+                    ((TextBlock)AnswerD.Child).Foreground = new SolidColorBrush(Color.FromRgb(219, 106, 5));
                 });
 
             });
@@ -102,10 +106,12 @@ namespace MIT_App
                     Border answer = (Border)sender;
                     Dispatcher.Invoke(() =>
                     {
-                        answer.Background = new SolidColorBrush(Color.FromRgb(141, 210, 138));
+                        answer.Background = new SolidColorBrush(Color.FromRgb(219, 106, 5));
+                        ((TextBlock)answer.Child).Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                         AnswerValue = answer.Name.ToString().Trim()[6];
                     });
                 });
+                ///Code Xử lí hereee
 
             }
         }
