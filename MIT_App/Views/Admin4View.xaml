@@ -127,6 +127,7 @@
                                         BorderThickness="1"
                                         BorderBrush="#0088B2"
                                         Padding="10 2"
+                                        MouseDown="Answer_MouseDown"
                                        >
                                     <TextBlock Text="test 1"
                                        VerticalAlignment="Center" 
@@ -528,6 +529,7 @@
                                         BorderThickness="1"
                                         BorderBrush="#0c9b75"
                                         Padding="10 2"
+                                        MouseDown="Answer_MouseDown"
                                        >
                                     <TextBlock Text="test 1"
                                        VerticalAlignment="Center" 
