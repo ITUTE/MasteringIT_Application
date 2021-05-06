@@ -54,7 +54,7 @@ MasteringIT_Application
 
 | Họ tên | Nhiệm vụ | Github |
 | --- | --- | --- |
-| Nguyễn Huỳnh Minh Tiến | Project Manager | <a href="https://github.com/tiennhm"><img alt="@tiennhm" width="48" height="48" src="https://avatars.githubusercontent.com/u/33385777?v=4"></a> |
-| Nguyễn Trung Tín | Dev | <a href="https://github.com/tinntbee"><img alt="@tinntbee" width="48" height="48" src="https://avatars.githubusercontent.com/u/72438631?v=4"></a> |
+| Nguyễn Huỳnh Minh Tiến | Project Owner | <a href="https://github.com/tiennhm"><img alt="@tiennhm" width="48" height="48" src="https://avatars.githubusercontent.com/u/33385777?v=4"></a> |
+| Nguyễn Trung Tín | Technical Manager | <a href="https://github.com/tinntbee"><img alt="@tinntbee" width="48" height="48" src="https://avatars.githubusercontent.com/u/72438631?v=4"></a> |
 | Nguyễn Quốc Bảo | Dev | <a href="https://github.com/BaoNguyen1001"><img alt="@BaoNguyen1001" width="48" height="48" src="https://avatars.githubusercontent.com/u/81003760?v=4"></a> |
 | Bùi Anh Đức |  Dev | <a href="https://github.com/anhduc0714"><img alt="@anhduc0714" width="48" height="48" src="https://avatars.githubusercontent.com/u/82456123?v=4"></a> |
