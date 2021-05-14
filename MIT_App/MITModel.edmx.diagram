@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5023fdf0f21b41af8d8cd207e0bf6e8c" Name="Diagram1">
+        <EntityTypeShape EntityType="MITModel.Answer" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.AnswerTest" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.Question" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.Round" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.Shape" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.Team" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MITModel.Testcase" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="MITModel.FK__Answer__IdQuesti__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__Answer__IdTeam__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__AnswerTes__IdAns__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__AnswerTes__IdTes__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__Question__IdRoun__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__Shape__IdQuestio__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="MITModel.FK__Testcase__IdQues__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

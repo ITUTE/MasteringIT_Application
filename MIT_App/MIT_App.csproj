@@ -37,6 +37,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.0\lib\net452\MaterialDesignColors.dll</HintPath>
     </Reference>
@@ -44,7 +50,10 @@
       <HintPath>..\packages\MaterialDesignThemes.4.0.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,11 +72,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Answer.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnswerTest.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MITModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MITModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MITModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Question.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Round.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shape.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Team.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Testcase.cs">
+      <DependentUpon>MITModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin3View.xaml.cs">
       <DependentUpon>Admin3View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin4View.xaml.cs">
       <DependentUpon>Admin4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin5View.xaml.cs">
+      <DependentUpon>Admin5View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Round2View.xaml.cs">
       <DependentUpon>Round2View.xaml</DependentUpon>
@@ -81,6 +129,9 @@
     <Compile Include="Views\Round4View.xaml.cs">
       <DependentUpon>Round4View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Round5View.xaml.cs">
+      <DependentUpon>Round5View.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\Admin1View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +143,10 @@
     <Page Include="Views\Admin4View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin5View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Round1View.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +179,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Round5View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -143,6 +202,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="MITModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MITModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MITModel.edmx.diagram">
+      <DependentUpon>MITModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,6 +240,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MITModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MITModel.Context.cs</LastGenOutput>
+      <DependentUpon>MITModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="MITModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MITModel.edmx</DependentUpon>
+      <LastGenOutput>MITModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />

@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdTeam" Type="int" />
+          <Property Name="IdQuestion" Type="int" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="Point" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="AnswerTest">
+          <Key>
+            <PropertyRef Name="IdTestCase" />
+            <PropertyRef Name="IdAnswer" />
+          </Key>
+          <Property Name="IdTestCase" Type="int" Nullable="false" />
+          <Property Name="IdAnswer" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdRound" Type="int" />
+          <Property Name="Imageuri" Type="nvarchar(max)" />
+          <Property Name="Point" Type="int" />
+          <Property Name="Solution" Type="nvarchar(max)" />
+          <Property Name="MaxPoint" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RoundName" Type="char" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Maxpoint" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Shape">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdQuestion" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Text" Type="nvarchar(max)" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TeamName" Type="char" MaxLength="50" />
+          <Property Name="Point" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Testcase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdQuestion" Type="int" />
+          <Property Name="Input" Type="nvarchar(max)" />
+          <Property Name="Output" Type="nvarchar(max)" />
+          <Property Name="Point" Type="int" />
+          <Property Name="Status" Type="tinyint" />
+        </EntityType>
+        <Association Name="FK__Answer__IdQuesti__45F365D3">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Answer__IdTeam__44FF419A">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnswerTes__IdAns__4E88ABD4">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="AnswerTest" Type="Self.AnswerTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnswerTest">
+              <PropertyRef Name="IdAnswer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnswerTes__IdTes__4D94879B">
+          <End Role="Testcase" Type="Self.Testcase" Multiplicity="1" />
+          <End Role="AnswerTest" Type="Self.AnswerTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Testcase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnswerTest">
+              <PropertyRef Name="IdTestCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__IdRoun__3C69FB99">
+          <End Role="Round" Type="Self.Round" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="IdRound" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shape__IdQuestio__49C3F6B7">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Shape" Type="Self.Shape" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shape">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Testcase__IdQues__412EB0B6">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Testcase" Type="Self.Testcase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Testcase">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MITModelStoreContainer">
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnswerTest" EntityType="Self.AnswerTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Round" EntityType="Self.Round" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Testcase" EntityType="Self.Testcase" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Answer__IdQuesti__45F365D3" Association="Self.FK__Answer__IdQuesti__45F365D3">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Answer__IdTeam__44FF419A" Association="Self.FK__Answer__IdTeam__44FF419A">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnswerTes__IdAns__4E88ABD4" Association="Self.FK__AnswerTes__IdAns__4E88ABD4">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="AnswerTest" EntitySet="AnswerTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnswerTes__IdTes__4D94879B" Association="Self.FK__AnswerTes__IdTes__4D94879B">
+            <End Role="Testcase" EntitySet="Testcase" />
+            <End Role="AnswerTest" EntitySet="AnswerTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__IdRoun__3C69FB99" Association="Self.FK__Question__IdRoun__3C69FB99">
+            <End Role="Round" EntitySet="Round" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shape__IdQuestio__49C3F6B7" Association="Self.FK__Shape__IdQuestio__49C3F6B7">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Shape" EntitySet="Shape" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Testcase__IdQues__412EB0B6" Association="Self.FK__Testcase__IdQues__412EB0B6">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Testcase" EntitySet="Testcase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdTeam" Type="Int32" />
+          <Property Name="IdQuestion" Type="Int32" />
+          <Property Name="Answer1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="Point" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Question" Relationship="Self.FK__Answer__IdQuesti__45F365D3" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="Team" Relationship="Self.FK__Answer__IdTeam__44FF419A" FromRole="Answer" ToRole="Team" />
+          <NavigationProperty Name="AnswerTests" Relationship="Self.FK__AnswerTes__IdAns__4E88ABD4" FromRole="Answer" ToRole="AnswerTest" />
+        </EntityType>
+        <EntityType Name="AnswerTest">
+          <Key>
+            <PropertyRef Name="IdTestCase" />
+            <PropertyRef Name="IdAnswer" />
+          </Key>
+          <Property Name="IdTestCase" Type="Int32" Nullable="false" />
+          <Property Name="IdAnswer" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK__AnswerTes__IdAns__4E88ABD4" FromRole="AnswerTest" ToRole="Answer" />
+          <NavigationProperty Name="Testcase" Relationship="Self.FK__AnswerTes__IdTes__4D94879B" FromRole="AnswerTest" ToRole="Testcase" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdRound" Type="Int32" />
+          <Property Name="Imageuri" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Int32" />
+          <Property Name="Solution" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaxPoint" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__IdQuesti__45F365D3" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="Round" Relationship="Self.FK__Question__IdRoun__3C69FB99" FromRole="Question" ToRole="Round" />
+          <NavigationProperty Name="Shapes" Relationship="Self.FK__Shape__IdQuestio__49C3F6B7" FromRole="Question" ToRole="Shape" />
+          <NavigationProperty Name="Testcases" Relationship="Self.FK__Testcase__IdQues__412EB0B6" FromRole="Question" ToRole="Testcase" />
+        </EntityType>
+        <EntityType Name="Round">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RoundName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Maxpoint" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK__Question__IdRoun__3C69FB99" FromRole="Round" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Shape">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdQuestion" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Question" Relationship="Self.FK__Shape__IdQuestio__49C3F6B7" FromRole="Shape" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="Point" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="Answers" Relationship="Self.FK__Answer__IdTeam__44FF419A" FromRole="Team" ToRole="Answer" />
+        </EntityType>
+        <EntityType Name="Testcase">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdQuestion" Type="Int32" />
+          <Property Name="Input" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Output" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Point" Type="Int32" />
+          <Property Name="Status" Type="Byte" />
+          <NavigationProperty Name="AnswerTests" Relationship="Self.FK__AnswerTes__IdTes__4D94879B" FromRole="Testcase" ToRole="AnswerTest" />
+          <NavigationProperty Name="Question" Relationship="Self.FK__Testcase__IdQues__412EB0B6" FromRole="Testcase" ToRole="Question" />
+        </EntityType>
+        <Association Name="FK__Answer__IdQuesti__45F365D3">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Answer__IdTeam__44FF419A">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnswerTes__IdAns__4E88ABD4">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+          <End Role="AnswerTest" Type="Self.AnswerTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnswerTest">
+              <PropertyRef Name="IdAnswer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AnswerTes__IdTes__4D94879B">
+          <End Role="Testcase" Type="Self.Testcase" Multiplicity="1" />
+          <End Role="AnswerTest" Type="Self.AnswerTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Testcase">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AnswerTest">
+              <PropertyRef Name="IdTestCase" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__IdRoun__3C69FB99">
+          <End Role="Round" Type="Self.Round" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Round">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="IdRound" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shape__IdQuestio__49C3F6B7">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Shape" Type="Self.Shape" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Shape">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Testcase__IdQues__412EB0B6">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Testcase" Type="Self.Testcase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Testcase">
+              <PropertyRef Name="IdQuestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MITEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="Self.Answer" />
+          <EntitySet Name="AnswerTests" EntityType="Self.AnswerTest" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Rounds" EntityType="Self.Round" />
+          <EntitySet Name="Shapes" EntityType="Self.Shape" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="Testcases" EntityType="Self.Testcase" />
+          <AssociationSet Name="FK__Answer__IdQuesti__45F365D3" Association="Self.FK__Answer__IdQuesti__45F365D3">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Answer__IdTeam__44FF419A" Association="Self.FK__Answer__IdTeam__44FF419A">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnswerTes__IdAns__4E88ABD4" Association="Self.FK__AnswerTes__IdAns__4E88ABD4">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="AnswerTest" EntitySet="AnswerTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AnswerTes__IdTes__4D94879B" Association="Self.FK__AnswerTes__IdTes__4D94879B">
+            <End Role="Testcase" EntitySet="Testcases" />
+            <End Role="AnswerTest" EntitySet="AnswerTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__IdRoun__3C69FB99" Association="Self.FK__Question__IdRoun__3C69FB99">
+            <End Role="Round" EntitySet="Rounds" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shape__IdQuestio__49C3F6B7" Association="Self.FK__Shape__IdQuestio__49C3F6B7">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Shape" EntitySet="Shapes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Testcase__IdQues__412EB0B6" Association="Self.FK__Testcase__IdQues__412EB0B6">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Testcase" EntitySet="Testcases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MITModelStoreContainer" CdmEntityContainer="MITEntities">
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="MITModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+                <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnswerTests">
+            <EntityTypeMapping TypeName="MITModel.AnswerTest">
+              <MappingFragment StoreEntitySet="AnswerTest">
+                <ScalarProperty Name="IdTestCase" ColumnName="IdTestCase" />
+                <ScalarProperty Name="IdAnswer" ColumnName="IdAnswer" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="MITModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdRound" ColumnName="IdRound" />
+                <ScalarProperty Name="Imageuri" ColumnName="Imageuri" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Solution" ColumnName="Solution" />
+                <ScalarProperty Name="MaxPoint" ColumnName="MaxPoint" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rounds">
+            <EntityTypeMapping TypeName="MITModel.Round">
+              <MappingFragment StoreEntitySet="Round">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoundName" ColumnName="RoundName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Maxpoint" ColumnName="Maxpoint" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shapes">
+            <EntityTypeMapping TypeName="MITModel.Shape">
+              <MappingFragment StoreEntitySet="Shape">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="MITModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testcases">
+            <EntityTypeMapping TypeName="MITModel.Testcase">
+              <MappingFragment StoreEntitySet="Testcase">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdQuestion" ColumnName="IdQuestion" />
+                <ScalarProperty Name="Input" ColumnName="Input" />
+                <ScalarProperty Name="Output" ColumnName="Output" />
+                <ScalarProperty Name="Point" ColumnName="Point" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
