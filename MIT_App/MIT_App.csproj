@@ -242,6 +242,7 @@
     <Resource Include="Image\left.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Image\hcmute_1.png" />
     <Content Include="MITModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MITModel.Context.cs</LastGenOutput>
