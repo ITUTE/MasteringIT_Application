@@ -29,7 +29,8 @@ namespace MIT_App.Views
         {
             int count = 0;
             BitmapImage src = new BitmapImage(new Uri("/Image/avt2_pro.png", UriKind.Relative));
-            Hinh.Source = new CroppedBitmap(src, new Int32Rect(0, 0, 10, 10));
+            Rectangle imagerect = new Rectangle();
+           
             
             //for (int i = 0; i < 3; i++)
             //    for (int j = 0; j < 3; j++)

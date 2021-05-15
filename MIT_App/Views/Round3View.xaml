@@ -12,6 +12,7 @@
         WindowStyle="None" 
         WindowState="Maximized">
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7.5*"/>
@@ -95,6 +96,8 @@
                         <Image Source="/Image/left.png"
                            HorizontalAlignment="Right" />
                     </Border>
+                  
+                    
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
