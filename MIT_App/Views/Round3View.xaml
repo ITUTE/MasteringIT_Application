@@ -1,6 +1,7 @@
 ﻿<Window x:Class="MIT_App.Views.Round3View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MIT_App.Views"
@@ -11,7 +12,151 @@
         WindowStartupLocation="Manual"
         WindowStyle="None" 
         WindowState="Maximized">
-    <Grid>
+    <Window.Resources>
+        <!--Button Hình Chữ Nhật-->
+        <ControlTemplate x:Key="ButtonRectangle" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinHeight="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" RenderTransformOrigin="0.5,0.5">
+                </Rectangle>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+        
+        <!--Button Hình Oval-->
+        <ControlTemplate x:Key='ButtonEllip' TargetType='{x:Type Button}'>
+            <Grid>
+                <Ellipse x:Name='Ell' Width='{TemplateBinding Width}' Height='{TemplateBinding Height}' Fill="{TemplateBinding Background}" MinHeight="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}"/>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Hình Bình Hành-->
+        <ControlTemplate x:Key="ButtonParallogram" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinHeight="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="-10"/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Hình Thoi-->
+        <ControlTemplate x:Key="ButtonDiamond" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Fill="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Width}" MinHeight="{TemplateBinding MinWidth}" MinWidth="{TemplateBinding MinWidth}" MaxHeight="{TemplateBinding MaxWidth}" MaxWidth="{TemplateBinding MaxWidth}" RenderTransformOrigin="0.5,0.5">
+                    <Rectangle.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="45">
+                            </RotateTransform>
+                            <ScaleTransform ScaleY="0.5"/>
+                        </TransformGroup>
+                    </Rectangle.RenderTransform>
+                </Rectangle>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Line Ngang-->
+        <ControlTemplate x:Key='ButtonLineH' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Line X1="0" Y1="10" X2="{TemplateBinding Width}" Y2="10" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Line Dọc-->
+        <ControlTemplate x:Key='ButtonLineV' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Line X1="10" Y1="0" X2="10" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Mũi tên sang Phải-->
+        <ControlTemplate x:Key='ButtonArrowRight' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Line X1="0" Y1="10" X2="{TemplateBinding Width}" Y2="10" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="{TemplateBinding MaxWidth}" Y1="10" X2="{TemplateBinding Width}" Y2="5" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="{TemplateBinding MaxWidth}" Y1="10" X2="{TemplateBinding Width}" Y2="15" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Mũi tên sang trái-->
+        <ControlTemplate x:Key='ButtonArrowLeft' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="180"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                    <Line X1="0" Y1="10" X2="{TemplateBinding Width}" Y2="10" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="{TemplateBinding MaxWidth}" Y1="10" X2="{TemplateBinding Width}" Y2="5" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="{TemplateBinding MaxWidth}" Y1="10" X2="{TemplateBinding Width}" Y2="15" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Mũi tên lên trên-->
+        <ControlTemplate x:Key='ButtonArrowUp' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="180"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                    <Line X1="10" Y1="0" X2="10" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="10" Y1="{TemplateBinding MaxHeight}" X2="5" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="10" Y1="{TemplateBinding MaxHeight}" X2="15" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+        <!--Button Mũi tên xuống dưới-->
+        <ControlTemplate x:Key='ButtonArrowDown' TargetType='{x:Type Button}'>
+            <Grid>
+                <Canvas VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" RenderTransformOrigin="0.5,0.5">
+                    <Line X1="10" Y1="0" X2="10" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="10" Y1="{TemplateBinding MaxHeight}" X2="5" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                    <Line X1="10" Y1="{TemplateBinding MaxHeight}" X2="15" Y2="{TemplateBinding Height}" Stroke="Black" 
+                  StrokeThickness="2" StrokeDashCap="Round" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+                </Canvas>
+                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" FontSize='{TemplateBinding FontSize}' HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" TextWrapping="Wrap"/>
+            </Grid>
+        </ControlTemplate>
+
+    </Window.Resources>
+    <Grid x:Name="Page">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7.5*"/>
@@ -156,13 +301,103 @@
                     BorderBrush="#db6a05"
                     Margin="20 10 20 20"
                     CornerRadius="35">
+                    <Canvas x:Name="MainPage"
+                            Margin="-10">
+                        <Button  MaxWidth="200" 
+                             MinHeight="100" 
+                             Content="Helrghrj kghkj jhehfgvshj ksfjghlo" 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonRectangle}" 
+                             Background="Aqua" Canvas.Left="168" Canvas.Top="136"
+                             PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Height="96" Width="197">
+                        </Button>
+                        <Button  MaxWidth="200" 
+                             MinHeight="100" 
+                             Content="Helrghrj kghkj jhehfgvshj ksfjghlo" 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonEllip}" 
+                             Background="Aqua" Canvas.Left="612" Canvas.Top="68"
+                             PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove">
+                        </Button>
 
+                        <Button  MaxWidth="200" 
+                             MinHeight="100" 
+                             Width="152"
+                             Height="143"
+                             Content="Helrghrj kghkj jhehfgvshj ksfjghlo" 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonDiamond}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="414" Canvas.Top="462">
+                        </Button>
+
+                        <Button  MaxWidth="145" 
+                             MaxHeight="147"
+                             Width="140"
+                             Height="20"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonArrowRight}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="211" Canvas.Top="259">
+                        </Button>
+                        <Button  MaxWidth="145" 
+                             MaxHeight="147"
+                             Width="140"
+                             Height="20"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonArrowLeft}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="113" Canvas.Top="68">
+                        </Button>
+                        <Button  MaxWidth="145" 
+                             MaxHeight="145"
+                             Width="20"
+                             Height="140"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonArrowUp}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="345" Canvas.Top="70">
+                        </Button>
+                        <Button  MaxWidth="145" 
+                             MaxHeight="145"
+                             Width="20"
+                             Height="140"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonArrowDown}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="467" Canvas.Top="132">
+                        </Button>
+                        <Button  MaxWidth="145" 
+                             MaxHeight="145"
+                             Width="20"
+                             Height="140"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonLineV}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="637" Canvas.Top="201">
+                        </Button>
+                        <Button  MaxWidth="145" 
+                             MaxHeight="147"
+                             Width="140"
+                             Height="20"
+                             Content=" " 
+                             Foreground="Black" 
+                             FontSize="20" 
+                             Template="{StaticResource ButtonLineH}" 
+                             Background="Aqua" PreviewMouseDown="Button_MouseDown" PreviewMouseUp="Button_MouseUp" PreviewMouseMove="Button_MouseMove" Canvas.Left="197" Canvas.Top="383">
+                        </Button>
+
+                    </Canvas>
                 </Border>
-                <Border BorderThickness="0"
-                        BorderBrush="White"
-                        Margin="22 60 22 90" >
-                    <Image Source="/Image/mid.png" />
-                </Border>
+                
+
                 <TextBlock Text="BEE's TEAM"
                            FontSize="40"
                            HorizontalAlignment="Center"
@@ -223,7 +458,8 @@
                                        FontSize="35"
                                        TextAlignment="Center"
                                        FontFamily="Arial"
-                                       Foreground="White"/>
+                                       Foreground="White">
+                            </TextBlock>
                         </Border>
                         <StackPanel Height="4"
                                     Width="20"

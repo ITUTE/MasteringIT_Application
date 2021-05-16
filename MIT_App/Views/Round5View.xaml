@@ -12,6 +12,12 @@
         WindowStartupLocation="Manual" 
         WindowStyle="None" 
         WindowState="Maximized">
+    <Window.Resources>
+        <BitmapImage x:Key="masterImage" UriSource="/Image/masterImageR5.png"/>
+        <CroppedBitmap x:Key="croppedImage" 
+            Source="{StaticResource masterImage}"
+            SourceRect="{Binding SourceRect}"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -77,8 +83,8 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="7.5*"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="8*"/>
                 <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -95,19 +101,19 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.60*"/>
-                    <ColumnDefinition Width="0.40*"/>
+                    <ColumnDefinition Width="0.64*"/>
+                    <ColumnDefinition Width="0.36*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <Border CornerRadius="30"
                         BorderThickness="3"
                         BorderBrush="#db6a05"
-                        Margin="20 0 20 0">
+                        Margin="20 30 20 30">
                         <Image Source="/Image/bgbase.png"/>
                     </Border>
                     <StackPanel HorizontalAlignment="Left"
                                 VerticalAlignment="Top"
-                                Margin="50 -20 0 0"
+                                Margin="50 10 0 0"
                                 Background="White">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -144,15 +150,70 @@
                             BorderBrush="#db6a05"
                             BorderThickness="3"
                             CornerRadius="25"
-                            Margin="20 -20 100 -20">
-                        <Image Name="Hinh" />
+                            Width="650px"
+                            Height="650px"
+                            Margin="0 0 20 0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Border x:Name="Image0" CornerRadius="25 0 0 0" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Border x:Name="Image1" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Border x:Name="Image2" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Border x:Name="Image3" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="4">
+                                    <Border CornerRadius="0 25 0 0" x:Name="Image4" Loaded="Image_Loaded"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Border CornerRadius="0 0 0 25" x:Name="Image5" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Border x:Name="Image6" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="2">
+                                    <Border x:Name="Image7" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="3">
+                                    <Border x:Name="Image8" Loaded="Image_Loaded"/>
+                                </Grid>
+                                <Grid Grid.Column="4">
+                                    <Border CornerRadius="0 0 25 0" x:Name="Image9" Loaded="Image_Loaded"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Border>
                 </Grid>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.60*"/>
-                    <ColumnDefinition Width="0.40*"/>
+                    <ColumnDefinition Width="0.64*"/>
+                    <ColumnDefinition Width="0.36*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel HorizontalAlignment="Left"
@@ -178,20 +239,23 @@
                             BorderBrush="#db6a05"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Padding="230 10"
-                            Margin="0 20 80 0">
+                            Height="80px"
+                            Width="600px"
+                            Margin="0 0 20 0">
                         <TextBlock Text="MAINKEY"
                                    FontSize="40"
                                    TextAlignment="Center"
-                                   FontFamily="Arial"/>
+                                   FontFamily="Arial"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
                     </Border>
                 </Grid>
             </Grid>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.55*"/>
-                <ColumnDefinition Width="0.45*"/>
+                <ColumnDefinition Width="0.64*"/>
+                <ColumnDefinition Width="0.36*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid Grid.Column="1" Margin="50 0 0 0">

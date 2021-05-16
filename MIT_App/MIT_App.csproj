@@ -132,6 +132,7 @@
     <Compile Include="Views\Round5View.xaml.cs">
       <DependentUpon>Round5View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewModels.cs" />
     <Page Include="Views\Admin1View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,6 +244,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\hcmute_1.png" />
+    <Resource Include="Image\masterImageR5.png" />
     <Content Include="MITModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MITModel.Context.cs</LastGenOutput>
